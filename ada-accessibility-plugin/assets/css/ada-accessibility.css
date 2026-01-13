@@ -205,7 +205,7 @@ html.ada-invert-active video {
    WIDGET STYLES
    ========================================== */
 
-/* Prevent widget from being affected by zoom */
+/* Prevent widget from being affected by zoom and ensure it stays in viewport */
 #ada-accessibility-toggle,
 #ada-accessibility-panel,
 #ada-reading-guide-line,
@@ -214,6 +214,7 @@ html.ada-invert-active video {
     zoom: 1 !important;
     -moz-transform: none !important;
 }
+
 
 /* Main Toggle Button */
 #ada-accessibility-toggle {
@@ -281,10 +282,11 @@ html.ada-invert-active video {
 /* Widget Panel */
 #ada-accessibility-panel {
     position: fixed;
-    bottom: 120px;
+    top: 20px;
     right: 30px;
+    bottom: auto;
     width: 380px;
-    max-height: 80vh;
+    max-height: calc(100vh - 120px);
     background: var(--ada-light) !important;
     border-radius: var(--ada-border-radius);
     box-shadow: var(--ada-shadow-hover);
@@ -633,8 +635,9 @@ body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn.active svg {
         width: calc(100% - 30px);
         right: 15px;
         left: 15px;
-        bottom: 80px;
-        max-height: 75vh;
+        top: 15px;
+        bottom: auto;
+        max-height: calc(100vh - 90px);
     }
 
     .ada-panel-header {
