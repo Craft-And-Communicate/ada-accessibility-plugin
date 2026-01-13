@@ -221,17 +221,21 @@ html.ada-invert-active video {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--ada-primary) 0%, var(--ada-primary-hover) 100%);
-    border: none;
+    width: 70px !important;
+    height: 70px !important;
+    min-width: 70px !important;
+    min-height: 70px !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, var(--ada-primary) 0%, var(--ada-primary-hover) 100%) !important;
+    border: none !important;
     cursor: pointer;
     box-shadow: var(--ada-shadow);
     z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -509,6 +513,24 @@ html.ada-invert-active video {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Firefox slider thumb */
+.ada-slider-control input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--ada-primary);
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Firefox slider track */
+.ada-slider-control input[type="range"]::-moz-range-track {
+    height: 8px;
+    border-radius: 4px;
+    background: #dee2e6;
+}
+
 .ada-slider-control input[type="range"]:focus {
     outline: 3px solid var(--ada-primary);
     outline-offset: 4px;
@@ -681,11 +703,20 @@ body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn.active svg {
         height: 20px !important;
     }
 
+    .ada-slider-control input[type="range"]::-moz-range-thumb {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
     #ada-accessibility-toggle {
-        width: 55px;
-        height: 55px;
+        width: 55px !important;
+        height: 55px !important;
+        min-width: 55px !important;
+        min-height: 55px !important;
+        aspect-ratio: 1 / 1 !important;
         bottom: 15px;
         right: 15px;
+        padding: 0 !important;
     }
 
     #ada-accessibility-toggle span,
