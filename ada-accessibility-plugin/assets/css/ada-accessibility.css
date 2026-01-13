@@ -40,22 +40,31 @@ body.ada-text-largest {
 }
 
 /* Prevent widget from scaling with text size in Firefox */
-body.ada-text-large #ada-accessibility-toggle,
-body.ada-text-large #ada-accessibility-panel {
+body.ada-text-large #ada-accessibility-toggle {
     -moz-transform: scale(calc(1/1.08)) !important;
     -moz-transform-origin: bottom right !important;
 }
+body.ada-text-large #ada-accessibility-panel {
+    -moz-transform: scale(calc(1/1.08)) !important;
+    -moz-transform-origin: top right !important;
+}
 
-body.ada-text-larger #ada-accessibility-toggle,
-body.ada-text-larger #ada-accessibility-panel {
+body.ada-text-larger #ada-accessibility-toggle {
     -moz-transform: scale(calc(1/1.15)) !important;
     -moz-transform-origin: bottom right !important;
 }
+body.ada-text-larger #ada-accessibility-panel {
+    -moz-transform: scale(calc(1/1.15)) !important;
+    -moz-transform-origin: top right !important;
+}
 
-body.ada-text-largest #ada-accessibility-toggle,
-body.ada-text-largest #ada-accessibility-panel {
+body.ada-text-largest #ada-accessibility-toggle {
     -moz-transform: scale(calc(1/1.22)) !important;
     -moz-transform-origin: bottom right !important;
+}
+body.ada-text-largest #ada-accessibility-panel {
+    -moz-transform: scale(calc(1/1.22)) !important;
+    -moz-transform-origin: top right !important;
 }
 
 /* Line Height */
