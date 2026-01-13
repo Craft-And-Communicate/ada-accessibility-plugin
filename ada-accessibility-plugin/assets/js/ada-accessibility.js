@@ -130,7 +130,8 @@
         panel.id = 'ada-accessibility-panel';
         panel.className = CONFIG.position;
         panel.setAttribute('role', 'dialog');
-        panel.setAttribute('aria-label', 'Accessibility Settings');
+        panel.setAttribute('aria-labelledby', 'ada-panel-title');
+        panel.setAttribute('aria-modal', 'true');
         panel.setAttribute('aria-hidden', 'true');
         panel.innerHTML = createPanelHTML();
         document.body.appendChild(panel);
@@ -144,8 +145,8 @@
      */
     function createPanelHTML() {
         return `
-            <div class="ada-panel-header">
-                <h2>Accessibility</h2>
+            <div class="ada-panel-header" role="banner">
+                <h2 id="ada-panel-title">Accessibility Menu</h2>
                 <button class="ada-close-btn" aria-label="Close accessibility menu">
                     <span aria-hidden="true">&times;</span>
                 </button>
