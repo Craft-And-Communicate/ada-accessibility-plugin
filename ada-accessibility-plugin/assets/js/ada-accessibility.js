@@ -269,9 +269,14 @@
             btn.addEventListener('click', handleFeatureClick);
         });
 
-        // Sliders
-        document.getElementById('ada-text-size').addEventListener('input', handleTextSizeChange);
-        document.getElementById('ada-line-height').addEventListener('input', handleLineHeightChange);
+        // Sliders - use both input and change events for Firefox compatibility
+        const textSizeSlider = document.getElementById('ada-text-size');
+        const lineHeightSlider = document.getElementById('ada-line-height');
+
+        textSizeSlider.addEventListener('input', handleTextSizeChange);
+        textSizeSlider.addEventListener('change', handleTextSizeChange);
+        lineHeightSlider.addEventListener('input', handleLineHeightChange);
+        lineHeightSlider.addEventListener('change', handleLineHeightChange);
 
         // Reset button
         document.getElementById('ada-reset-all').addEventListener('click', resetAll);

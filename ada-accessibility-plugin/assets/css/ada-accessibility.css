@@ -502,6 +502,8 @@ html.ada-invert-active video {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    cursor: pointer;
+    touch-action: manipulation;
 }
 
 .ada-slider-control input[type="range"]::-webkit-slider-thumb {
