@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: ADA Accessibility Widget
- * Plugin URI: https://yoursite.com/ada-accessibility
- * Description: A comprehensive accessibility widget designed for seniors and senior living communities. Provides text sizing, contrast modes, reading guides, and more.
- * Version: 1.0.0
- * Author: Your Company
+ * Plugin Name: C&C ADA Accessibility
+ * Plugin URI: https://craftandcommunicate.com
+ * Description: A comprehensive accessibility widget by Craft & Communicate, designed for seniors and senior living communities. Provides text sizing, contrast modes, reading guides, and more.
+ * Version: 1.1.2
+ * Author: Craft & Communicate LLC
  * License: GPL v2 or later
  * Text Domain: ada-accessibility
  */
@@ -15,9 +15,25 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('ADA_ACCESS_VERSION', '1.0.0');
+define('ADA_ACCESS_VERSION', '1.1.2');
 define('ADA_ACCESS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ADA_ACCESS_PLUGIN_URL', plugin_dir_url(__FILE__));
+
+// Plugin Update Checker - enables auto-updates from GitHub
+require_once ADA_ACCESS_PLUGIN_DIR . 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$adaUpdateChecker = PucFactory::buildUpdateChecker(
+    'https://github.com/Craft-And-Communicate/ada-accessibility-plugin/',
+    __FILE__,
+    'ada-accessibility-plugin'
+);
+
+// Set the branch that contains the stable release
+$adaUpdateChecker->setBranch('main');
+
+// Optional: If you want to use release assets instead of source code
+$adaUpdateChecker->getVcsApi()->enableReleaseAssets();
 
 class ADA_Accessibility_Widget {
 
@@ -35,6 +51,13 @@ class ADA_Accessibility_Widget {
         add_action('wp_footer', array($this, 'render_widget'));
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_init', array($this, 'register_settings'));
+        add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_settings_link'));
+    }
+
+    public function add_settings_link($links) {
+        $settings_link = '<a href="' . admin_url('options-general.php?page=ada-accessibility') . '">' . __('Settings', 'ada-accessibility') . '</a>';
+        array_unshift($links, $settings_link);
+        return $links;
     }
 
     public function enqueue_assets() {
@@ -69,8 +92,8 @@ class ADA_Accessibility_Widget {
 
     public function add_admin_menu() {
         add_options_page(
-            __('ADA Accessibility Settings', 'ada-accessibility'),
-            __('ADA Accessibility', 'ada-accessibility'),
+            __('C&C ADA Accessibility Settings', 'ada-accessibility'),
+            __('C&C Accessibility', 'ada-accessibility'),
             'manage_options',
             'ada-accessibility',
             array($this, 'render_admin_page')

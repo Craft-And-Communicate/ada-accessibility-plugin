@@ -105,24 +105,19 @@
      * Create all widget elements
      */
     function createElements() {
-        // Create skip link
-        const skipLink = document.createElement('a');
-        skipLink.href = '#main-content';
-        skipLink.className = 'ada-skip-link';
-        skipLink.textContent = 'Skip to Main Content';
-        document.body.insertBefore(skipLink, document.body.firstChild);
-
         // Create toggle button
         toggle = document.createElement('button');
         toggle.id = 'ada-accessibility-toggle';
         toggle.className = CONFIG.position;
-        toggle.setAttribute('aria-label', 'Open Accessibility Menu');
+        toggle.setAttribute('aria-label', 'Open C&C Accessibility Menu');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.innerHTML = `
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/>
-            </svg>
-        `;
+
+        // Create icon span with inline styles for maximum theme compatibility
+        const iconSpan = document.createElement('span');
+        iconSpan.setAttribute('aria-hidden', 'true');
+        iconSpan.style.cssText = 'display:block!important;width:36px!important;height:36px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23ffffff\'%3E%3Cpath d=\'M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z\'/%3E%3C/svg%3E")!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;';
+        toggle.appendChild(iconSpan);
+
         document.body.appendChild(toggle);
 
         // Create panel
@@ -146,8 +141,8 @@
     function createPanelHTML() {
         return `
             <div class="ada-panel-header" role="banner">
-                <h2 id="ada-panel-title">Accessibility Menu</h2>
-                <button class="ada-close-btn" aria-label="Close accessibility menu">
+                <h2 id="ada-panel-title">C&C Accessibility</h2>
+                <button class="ada-close-btn" aria-label="Close C&C Accessibility menu">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -449,10 +444,11 @@
         // Letter spacing
         body.classList.toggle('ada-letter-spacing', state.letterSpacing);
 
-        // Contrast modes
-        body.classList.remove('ada-contrast-dark', 'ada-contrast-light');
-        if (state.contrastMode === 'dark') body.classList.add('ada-contrast-dark');
-        if (state.contrastMode === 'light') body.classList.add('ada-contrast-light');
+        // Contrast modes - applied to html element to use filter-based approach
+        const htmlEl = document.documentElement;
+        htmlEl.classList.remove('ada-contrast-dark-active', 'ada-contrast-light-active');
+        if (state.contrastMode === 'dark') htmlEl.classList.add('ada-contrast-dark-active');
+        if (state.contrastMode === 'light') htmlEl.classList.add('ada-contrast-light-active');
 
         // Fonts
         body.classList.toggle('ada-dyslexia-font', state.dyslexiaFont);
@@ -470,9 +466,10 @@
         // Animations
         body.classList.toggle('ada-pause-animations', state.pauseAnimations);
 
-        // Color filters
-        body.classList.toggle('ada-desaturate', state.desaturate);
-        body.classList.toggle('ada-invert', state.invertColors);
+        // Color filters - applied to html element to avoid stacking context issues with fixed positioning
+        const html = document.documentElement;
+        html.classList.toggle('ada-desaturate-active', state.desaturate);
+        html.classList.toggle('ada-invert-active', state.invertColors);
 
         // Update slider values
         const textSizeSlider = document.getElementById('ada-text-size');

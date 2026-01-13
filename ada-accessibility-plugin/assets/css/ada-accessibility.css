@@ -54,41 +54,35 @@ body.ada-letter-spacing * {
     word-spacing: 0.16em !important;
 }
 
-/* High Contrast Mode - Dark */
-body.ada-contrast-dark {
-    background-color: #000 !important;
-    color: #fff !important;
+/* High Contrast Mode - Dark (using filter for reliability) */
+html.ada-contrast-dark-active {
+    filter: invert(1) hue-rotate(180deg);
 }
 
-body.ada-contrast-dark * {
-    background-color: #000 !important;
-    color: #fff !important;
-    border-color: #fff !important;
+/* Re-invert images/videos so they display correctly */
+html.ada-contrast-dark-active img,
+html.ada-contrast-dark-active video,
+html.ada-contrast-dark-active iframe,
+html.ada-contrast-dark-active svg image,
+html.ada-contrast-dark-active [style*="background-image"] {
+    filter: invert(1) hue-rotate(180deg) !important;
 }
 
-body.ada-contrast-dark a {
-    color: #ffff00 !important;
+/* Keep widget normal */
+html.ada-contrast-dark-active #ada-accessibility-toggle,
+html.ada-contrast-dark-active #ada-accessibility-panel {
+    filter: invert(1) hue-rotate(180deg) !important;
 }
 
-body.ada-contrast-dark img {
-    filter: brightness(0.9) contrast(1.1);
+/* High Contrast Mode - Light (increase contrast) */
+html.ada-contrast-light-active {
+    filter: contrast(1.4) brightness(1.1);
 }
 
-/* High Contrast Mode - Light */
-body.ada-contrast-light {
-    background-color: #fff !important;
-    color: #000 !important;
-}
-
-body.ada-contrast-light * {
-    background-color: #fff !important;
-    color: #000 !important;
-    border-color: #000 !important;
-}
-
-body.ada-contrast-light a {
-    color: #0000cc !important;
-    text-decoration: underline !important;
+/* Keep widget normal */
+html.ada-contrast-light-active #ada-accessibility-toggle,
+html.ada-contrast-light-active #ada-accessibility-panel {
+    filter: contrast(1) brightness(1) !important;
 }
 
 /* Dyslexia Friendly Font */
@@ -182,18 +176,28 @@ body.ada-pause-animations *::after {
     transition: none !important;
 }
 
-/* Desaturate/Grayscale */
-body.ada-desaturate {
-    filter: grayscale(100%) !important;
+/* Desaturate/Grayscale - applied to html to avoid stacking context issues with fixed elements */
+html.ada-desaturate-active {
+    filter: grayscale(100%);
 }
 
-/* Invert Colors */
-body.ada-invert {
+html.ada-desaturate-active #ada-accessibility-toggle,
+html.ada-desaturate-active #ada-accessibility-panel {
+    filter: grayscale(0%) !important;
+}
+
+/* Invert Colors - applied to html to avoid stacking context issues */
+html.ada-invert-active {
+    filter: invert(100%);
+}
+
+html.ada-invert-active #ada-accessibility-toggle,
+html.ada-invert-active #ada-accessibility-panel {
     filter: invert(100%) !important;
 }
 
-body.ada-invert img,
-body.ada-invert video {
+html.ada-invert-active img,
+html.ada-invert-active video {
     filter: invert(100%) !important;
 }
 
@@ -240,10 +244,33 @@ body.ada-invert video {
     outline-offset: 4px;
 }
 
-#ada-accessibility-toggle svg {
-    width: 36px;
-    height: 36px;
-    fill: white;
+/* Accessibility icon - CSS fallback using ::before */
+#ada-accessibility-toggle::before {
+    content: '' !important;
+    display: block !important;
+    width: 36px !important;
+    height: 36px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z'/%3E%3C/svg%3E") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+/* Hide ::before when span is present (new JS version) */
+#ada-accessibility-toggle:has(span)::before {
+    display: none !important;
+}
+
+/* Accessibility icon span - primary method */
+#ada-accessibility-toggle span {
+    display: block !important;
+    width: 36px !important;
+    height: 36px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    flex-shrink: 0 !important;
+    pointer-events: none !important;
 }
 
 #ada-accessibility-toggle.left {
@@ -258,13 +285,36 @@ body.ada-invert video {
     right: 30px;
     width: 380px;
     max-height: 80vh;
-    background: var(--ada-light);
+    background: var(--ada-light) !important;
     border-radius: var(--ada-border-radius);
     box-shadow: var(--ada-shadow-hover);
     z-index: 999999;
     overflow: hidden;
     display: none;
     flex-direction: column;
+    /* CSS isolation */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    text-align: left !important;
+    color: #1a1a1a !important;
+}
+
+/* Force system font on ALL widget elements - override theme fonts */
+#ada-accessibility-panel *,
+#ada-accessibility-panel *::before,
+#ada-accessibility-panel *::after,
+#ada-accessibility-panel h2,
+#ada-accessibility-panel h3,
+#ada-accessibility-panel button,
+#ada-accessibility-panel span,
+#ada-accessibility-panel label,
+#ada-accessibility-panel p,
+#ada-accessibility-panel a {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+    font-style: normal !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
 }
 
 #ada-accessibility-panel.active {
@@ -287,11 +337,13 @@ body.ada-invert video {
 }
 
 .ada-panel-header h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: 0.02em;
+    margin: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
     color: #ffffff !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -325,6 +377,8 @@ body.ada-invert video {
     padding: 20px;
     overflow-y: auto;
     flex: 1;
+    background: #ffffff !important;
+    color: #1a1a1a !important;
 }
 
 /* Feature Sections */
@@ -333,14 +387,17 @@ body.ada-invert video {
 }
 
 .ada-feature-section h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--ada-gray);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin: 0 0 15px 0;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e9ecef;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+    color: #6c757d !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin: 0 0 15px 0 !important;
+    padding-bottom: 8px !important;
+    border-bottom: 2px solid #e9ecef !important;
+    background: transparent !important;
 }
 
 /* Feature Buttons */
@@ -356,17 +413,18 @@ body.ada-invert video {
     align-items: center;
     justify-content: center;
     padding: 18px 12px;
-    background: #f8f9fa;
-    border: 2px solid #dee2e6;
+    background: #f8f9fa !important;
+    border: 2px solid #dee2e6 !important;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
     min-height: 90px;
+    color: #1a1a1a !important;
 }
 
 .ada-feature-btn:hover {
-    background: #e9ecef;
-    border-color: var(--ada-primary);
+    background: #e9ecef !important;
+    border-color: var(--ada-primary) !important;
 }
 
 .ada-feature-btn:focus {
@@ -375,27 +433,42 @@ body.ada-invert video {
 }
 
 .ada-feature-btn.active {
-    background: var(--ada-primary);
-    border-color: var(--ada-primary);
-    color: white;
+    background: var(--ada-primary) !important;
+    border-color: var(--ada-primary) !important;
+    color: white !important;
+}
+
+.ada-feature-btn.active span {
+    color: white !important;
 }
 
 .ada-feature-btn.active svg {
-    fill: white;
+    fill: white !important;
 }
 
 .ada-feature-btn svg {
-    width: 28px;
-    height: 28px;
-    fill: var(--ada-dark);
+    width: 28px !important;
+    height: 28px !important;
+    fill: #1a1a1a !important;
     margin-bottom: 8px;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .ada-feature-btn span {
-    font-size: 13px;
-    font-weight: 500;
-    text-align: center;
-    line-height: 1.3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    line-height: 1.3 !important;
+    color: #1a1a1a !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
 }
 
 /* Slider Controls */
@@ -410,6 +483,8 @@ body.ada-invert video {
     margin-bottom: 8px;
     font-size: 15px;
     font-weight: 500;
+    color: #1a1a1a !important;
+    background: transparent !important;
 }
 
 .ada-slider-control input[type="range"] {
@@ -464,11 +539,15 @@ body.ada-invert video {
 /* Panel Footer */
 .ada-panel-footer {
     padding: 15px 20px;
-    background: #f8f9fa;
-    border-top: 1px solid #dee2e6;
+    background: #f8f9fa !important;
+    border-top: 1px solid #dee2e6 !important;
     text-align: center;
     font-size: 12px;
-    color: var(--ada-gray);
+    color: #6c757d !important;
+}
+
+.ada-panel-footer a {
+    color: #0066cc !important;
 }
 
 /* Hide widget elements from screen when panel styling is applied */
@@ -483,43 +562,164 @@ body.ada-desaturate #ada-accessibility-toggle {
     filter: none !important;
 }
 
-body.ada-contrast-dark #ada-accessibility-panel *,
-body.ada-contrast-light #ada-accessibility-panel * {
-    background-color: initial !important;
-    color: initial !important;
-    border-color: initial !important;
+/* Reset widget panel content to proper colors when contrast modes are active */
+body.ada-contrast-dark #ada-accessibility-panel .ada-panel-content,
+body.ada-contrast-light #ada-accessibility-panel .ada-panel-content {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-feature-btn,
+body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn {
+    background-color: #f8f9fa !important;
+    color: #1a1a1a !important;
+    border-color: #dee2e6 !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-feature-btn span,
+body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn span {
+    color: #1a1a1a !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-feature-btn.active,
+body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn.active {
+    background-color: #0066cc !important;
+    color: #ffffff !important;
+    border-color: #0066cc !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-feature-btn.active span,
+body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn.active span {
+    color: #ffffff !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-feature-section h3,
+body.ada-contrast-light #ada-accessibility-panel .ada-feature-section h3 {
+    color: #6c757d !important;
+    background-color: transparent !important;
+    border-color: #e9ecef !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-slider-control label,
+body.ada-contrast-light #ada-accessibility-panel .ada-slider-control label {
+    color: #1a1a1a !important;
+    background-color: transparent !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-panel-footer,
+body.ada-contrast-light #ada-accessibility-panel .ada-panel-footer {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-panel-footer a,
+body.ada-contrast-light #ada-accessibility-panel .ada-panel-footer a {
+    color: #0066cc !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-feature-btn svg,
+body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn svg {
+    fill: #1a1a1a !important;
+}
+
+body.ada-contrast-dark #ada-accessibility-panel .ada-feature-btn.active svg,
+body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn.active svg {
+    fill: #ffffff !important;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 480px) {
     #ada-accessibility-panel {
-        width: calc(100% - 40px);
-        right: 20px;
-        left: 20px;
-        bottom: 100px;
-        max-height: 70vh;
+        width: calc(100% - 30px);
+        right: 15px;
+        left: 15px;
+        bottom: 80px;
+        max-height: 75vh;
+    }
+
+    .ada-panel-header {
+        padding: 12px 15px !important;
+    }
+
+    .ada-panel-header h2 {
+        font-size: 18px !important;
+    }
+
+    .ada-close-btn {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 20px !important;
+    }
+
+    .ada-panel-content {
+        padding: 12px !important;
+    }
+
+    .ada-feature-section {
+        margin-bottom: 15px !important;
+    }
+
+    .ada-feature-section h3 {
+        font-size: 12px !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 5px !important;
+    }
+
+    .ada-slider-control {
+        margin-bottom: 10px !important;
+    }
+
+    .ada-slider-control label {
+        font-size: 13px !important;
+    }
+
+    .ada-slider-control input[type="range"]::-webkit-slider-thumb {
+        width: 20px !important;
+        height: 20px !important;
     }
 
     #ada-accessibility-toggle {
-        width: 60px;
-        height: 60px;
-        bottom: 20px;
-        right: 20px;
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        right: 15px;
     }
 
-    #ada-accessibility-toggle svg {
-        width: 30px;
-        height: 30px;
+    #ada-accessibility-toggle span,
+    #ada-accessibility-toggle::before {
+        width: 28px !important;
+        height: 28px !important;
     }
 
     .ada-feature-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 8px;
     }
 
     .ada-feature-btn {
-        padding: 14px 10px;
-        min-height: 80px;
+        padding: 10px 8px !important;
+        min-height: 65px !important;
+    }
+
+    .ada-feature-btn svg {
+        width: 22px !important;
+        height: 22px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .ada-feature-btn span {
+        font-size: 11px !important;
+        line-height: 1.2 !important;
+    }
+
+    .ada-reset-btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+    }
+
+    .ada-panel-footer {
+        padding: 10px 15px !important;
+        font-size: 11px !important;
     }
 }
 
@@ -540,21 +740,3 @@ body.ada-contrast-light #ada-accessibility-panel * {
     outline-offset: 3px !important;
 }
 
-/* Skip to Content Link */
-.ada-skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--ada-primary);
-    color: white;
-    padding: 12px 20px;
-    z-index: 1000000;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 0 0 8px 0;
-    transition: top 0.3s ease;
-}
-
-.ada-skip-link:focus {
-    top: 0;
-}

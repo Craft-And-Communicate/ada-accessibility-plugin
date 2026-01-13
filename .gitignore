@@ -1,2 +1,11 @@
 # Local Netlify folder
 .netlify
+
+# Ignore zip distribution files
+*.zip
+
+# Ignore test files
+test.html
+
+# macOS
+.DS_Store

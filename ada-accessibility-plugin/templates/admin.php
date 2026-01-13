@@ -70,7 +70,7 @@ if (!defined('ABSPATH')) {
 
     <hr>
 
-    <h2><?php _e('About ADA Accessibility Widget', 'ada-accessibility'); ?></h2>
+    <h2><?php _e('About C&C ADA Accessibility', 'ada-accessibility'); ?></h2>
     <p><?php _e('This accessibility widget is designed specifically for seniors and senior living communities. It provides easy-to-use tools to help visitors with:', 'ada-accessibility'); ?></p>
     <ul style="list-style: disc; margin-left: 20px;">
         <li><?php _e('Vision impairments (contrast modes, text sizing)', 'ada-accessibility'); ?></li>
