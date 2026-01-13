@@ -20,24 +20,23 @@
    ACCESSIBILITY MODIFICATIONS TO PAGE
    ========================================== */
 
-/* Text Size Adjustments */
+/* Text Size Adjustments - using zoom for proportional scaling */
 body.ada-text-large {
-    font-size: 120% !important;
+    zoom: 1.15;
+    -moz-transform: scale(1.15);
+    -moz-transform-origin: top left;
 }
 
 body.ada-text-larger {
-    font-size: 140% !important;
+    zoom: 1.3;
+    -moz-transform: scale(1.3);
+    -moz-transform-origin: top left;
 }
 
 body.ada-text-largest {
-    font-size: 160% !important;
-}
-
-body.ada-text-large *,
-body.ada-text-larger *,
-body.ada-text-largest * {
-    font-size: inherit !important;
-    line-height: 1.6 !important;
+    zoom: 1.45;
+    -moz-transform: scale(1.45);
+    -moz-transform-origin: top left;
 }
 
 /* Line Height */
@@ -201,6 +200,16 @@ body.ada-invert video {
 /* ==========================================
    WIDGET STYLES
    ========================================== */
+
+/* Prevent widget from being affected by zoom */
+#ada-accessibility-toggle,
+#ada-accessibility-panel,
+#ada-reading-guide-line,
+#ada-reading-mask-top,
+#ada-reading-mask-bottom {
+    zoom: 1 !important;
+    -moz-transform: none !important;
+}
 
 /* Main Toggle Button */
 #ada-accessibility-toggle {
