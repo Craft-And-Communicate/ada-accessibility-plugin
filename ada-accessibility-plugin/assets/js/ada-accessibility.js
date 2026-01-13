@@ -253,7 +253,7 @@
                 </button>
             </div>
             <div class="ada-panel-footer">
-                <p>ADA Accessibility Widget &bull; Designed for Seniors</p>
+                <p>ADA Accessibility Widget by <a href="https://craftandcommunicate.com" target="_blank" rel="noopener" style="color: var(--ada-primary); text-decoration: none; font-weight: 600;">Craft &amp; Communicate</a></p>
             </div>
         `;
     }
