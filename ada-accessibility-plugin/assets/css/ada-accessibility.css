@@ -3,6 +3,9 @@
  * Designed for seniors and senior living communities
  */
 
+/* Import OpenDyslexic font for dyslexia-friendly option */
+@import url('https://fonts.cdnfonts.com/css/opendyslexic');
+
 /* CSS Variables for easy customization */
 :root {
     --ada-primary: #0066cc;
