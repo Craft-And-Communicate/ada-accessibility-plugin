@@ -21,50 +21,17 @@
    ========================================== */
 
 /* Text Size Adjustments - using zoom for proportional scaling */
+/* Note: zoom is not supported in Firefox - users should use browser zoom (Ctrl +/-) */
 body.ada-text-large {
     zoom: 1.08;
-    -moz-transform: scale(1.08);
-    -moz-transform-origin: top left;
 }
 
 body.ada-text-larger {
     zoom: 1.15;
-    -moz-transform: scale(1.15);
-    -moz-transform-origin: top left;
 }
 
 body.ada-text-largest {
     zoom: 1.22;
-    -moz-transform: scale(1.22);
-    -moz-transform-origin: top left;
-}
-
-/* Prevent widget from scaling with text size in Firefox */
-body.ada-text-large #ada-accessibility-toggle {
-    -moz-transform: scale(calc(1/1.08)) !important;
-    -moz-transform-origin: bottom right !important;
-}
-body.ada-text-large #ada-accessibility-panel {
-    -moz-transform: scale(calc(1/1.08)) !important;
-    -moz-transform-origin: top right !important;
-}
-
-body.ada-text-larger #ada-accessibility-toggle {
-    -moz-transform: scale(calc(1/1.15)) !important;
-    -moz-transform-origin: bottom right !important;
-}
-body.ada-text-larger #ada-accessibility-panel {
-    -moz-transform: scale(calc(1/1.15)) !important;
-    -moz-transform-origin: top right !important;
-}
-
-body.ada-text-largest #ada-accessibility-toggle {
-    -moz-transform: scale(calc(1/1.22)) !important;
-    -moz-transform-origin: bottom right !important;
-}
-body.ada-text-largest #ada-accessibility-panel {
-    -moz-transform: scale(calc(1/1.22)) !important;
-    -moz-transform-origin: top right !important;
 }
 
 /* Line Height */
