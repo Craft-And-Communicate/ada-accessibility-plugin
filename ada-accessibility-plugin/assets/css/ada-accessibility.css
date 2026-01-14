@@ -217,8 +217,9 @@ html.ada-invert-active video {
 /* Main Toggle Button */
 #ada-accessibility-toggle {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
     width: 70px !important;
     height: 70px !important;
     min-width: 70px !important;
@@ -276,16 +277,12 @@ html.ada-invert-active video {
     pointer-events: none !important;
 }
 
-#ada-accessibility-toggle.left {
-    right: auto;
-    left: 30px;
-}
-
 /* Widget Panel */
 #ada-accessibility-panel {
     position: fixed;
     top: 20px;
-    right: 30px;
+    left: 100px;
+    right: auto;
     bottom: auto;
     width: 380px;
     max-height: calc(100vh - 120px);
@@ -323,11 +320,6 @@ html.ada-invert-active video {
 
 #ada-accessibility-panel.active {
     display: flex;
-}
-
-#ada-accessibility-panel.left {
-    right: auto;
-    left: 30px;
 }
 
 /* Panel Header */
@@ -713,13 +705,14 @@ body.ada-contrast-light #ada-accessibility-panel .ada-feature-btn.active svg {
     }
 
     #ada-accessibility-toggle {
-        width: 55px !important;
-        height: 55px !important;
-        min-width: 55px !important;
-        min-height: 55px !important;
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
         aspect-ratio: 1 / 1 !important;
-        bottom: 15px;
-        right: 15px;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
         padding: 0 !important;
     }
 
