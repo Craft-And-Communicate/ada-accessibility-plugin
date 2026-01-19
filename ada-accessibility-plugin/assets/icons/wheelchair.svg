@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#ffffff">
+  <!-- Head -->
+  <circle cx="58" cy="18" r="10"/>
+  <!-- Body/Back -->
+  <path d="M48 28 L48 55 L68 55 L68 45 L58 45 L58 28 Z"/>
+  <!-- Large Wheel -->
+  <path d="M35 85 A25 25 0 1 1 35 35 A25 25 0 1 1 35 85 Z M35 75 A15 15 0 1 0 35 45 A15 15 0 1 0 35 75 Z" fill-rule="evenodd"/>
+  <!-- Leg/Footrest -->
+  <path d="M58 55 L58 70 L75 90 L85 82 L70 65 L70 55 Z"/>
+</svg>

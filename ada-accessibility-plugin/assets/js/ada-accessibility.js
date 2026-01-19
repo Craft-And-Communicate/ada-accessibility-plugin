@@ -112,11 +112,7 @@
         toggle.setAttribute('aria-label', 'Open C&C Accessibility Menu');
         toggle.setAttribute('aria-expanded', 'false');
 
-        // Create icon span with inline styles for maximum theme compatibility
-        const iconSpan = document.createElement('span');
-        iconSpan.setAttribute('aria-hidden', 'true');
-        iconSpan.style.cssText = 'display:block!important;width:36px!important;height:36px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23ffffff\'%3E%3Cpath d=\'M9 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm-3 15a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm12-1h-4l-2-6H7v2h4l2 6h5v-2z\'/%3E%3C/svg%3E")!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;';
-        toggle.appendChild(iconSpan);
+        // Icon is handled by CSS ::before pseudo-element for reliability
 
         document.body.appendChild(toggle);
 
