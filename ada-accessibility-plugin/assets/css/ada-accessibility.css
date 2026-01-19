@@ -253,7 +253,7 @@ html.ada-invert-active video {
     display: block !important;
     width: 36px !important;
     height: 36px !important;
-    background-image: url('../icons/wheelchair.png') !important;
+    background-image: url('../icons/wheelchair.svg') !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;

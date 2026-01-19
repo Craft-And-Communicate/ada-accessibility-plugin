@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wheelchair Icon Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #f0f0f0;
+        }
+        .preview-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .button-preview {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        .button-preview img {
+            width: 36px;
+            height: 36px;
+        }
+        h2 { margin-bottom: 20px; }
+        .label { margin-top: 10px; text-align: center; font-size: 14px; color: #666; }
+    </style>
+</head>
+<body>
+    <h2>Wheelchair Icon Preview</h2>
+    <div class="preview-container">
+        <div>
+            <div class="button-preview">
+                <img src="ada-accessibility-plugin/assets/icons/wheelchair.svg" alt="Wheelchair Icon">
+            </div>
+            <div class="label">On Blue Button</div>
+        </div>
+        <div>
+            <div style="background: #333; padding: 20px; border-radius: 8px;">
+                <img src="ada-accessibility-plugin/assets/icons/wheelchair.svg" alt="Wheelchair Icon" style="width: 60px; height: 60px;">
+            </div>
+            <div class="label">On Dark Background</div>
+        </div>
+        <div>
+            <div style="background: #0066cc; padding: 20px; border-radius: 8px;">
+                <img src="ada-accessibility-plugin/assets/icons/wheelchair.svg" alt="Wheelchair Icon" style="width: 60px; height: 60px;">
+            </div>
+            <div class="label">On Blue Background</div>
+        </div>
+    </div>
+    <p style="margin-top: 30px;">If this looks correct, let me know and I'll release the update.</p>
+</body>
+</html>
