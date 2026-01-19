@@ -310,7 +310,7 @@ html.ada-invert-active video {
 .ada-panel-header {
     background: linear-gradient(135deg, var(--ada-primary) 0%, var(--ada-primary-hover) 100%);
     color: white;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -354,7 +354,7 @@ html.ada-invert-active video {
 
 /* Panel Content */
 .ada-panel-content {
-    padding: 20px;
+    padding: 15px;
     overflow-y: auto;
     flex: 1;
     background: #ffffff !important;
@@ -363,19 +363,19 @@ html.ada-invert-active video {
 
 /* Feature Sections */
 .ada-feature-section {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .ada-feature-section h3 {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
-    font-size: 14px !important;
+    font-size: 12px !important;
     font-weight: 600 !important;
     font-style: normal !important;
     color: #6c757d !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
-    margin: 0 0 15px 0 !important;
-    padding-bottom: 8px !important;
+    margin: 0 0 8px 0 !important;
+    padding-bottom: 5px !important;
     border-bottom: 2px solid #e9ecef !important;
     background: transparent !important;
 }
@@ -384,7 +384,7 @@ html.ada-invert-active video {
 .ada-feature-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 8px;
 }
 
 .ada-feature-btn {
@@ -392,13 +392,13 @@ html.ada-invert-active video {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 18px 12px;
+    padding: 10px 8px;
     background: #f8f9fa !important;
     border: 2px solid #dee2e6 !important;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    min-height: 90px;
+    min-height: 65px;
     color: #1a1a1a !important;
 }
 
@@ -427,10 +427,10 @@ html.ada-invert-active video {
 }
 
 .ada-feature-btn svg {
-    width: 28px !important;
-    height: 28px !important;
+    width: 22px !important;
+    height: 22px !important;
     fill: #1a1a1a !important;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -438,13 +438,13 @@ html.ada-invert-active video {
 
 .ada-feature-btn span {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
-    font-size: 12px !important;
+    font-size: 10px !important;
     font-weight: 600 !important;
     font-style: normal !important;
     text-align: center !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.3px !important;
-    line-height: 1.3 !important;
+    letter-spacing: 0.2px !important;
+    line-height: 1.2 !important;
     color: #1a1a1a !important;
     opacity: 1 !important;
     visibility: visible !important;
