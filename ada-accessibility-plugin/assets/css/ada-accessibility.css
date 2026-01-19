@@ -253,7 +253,7 @@ html.ada-invert-active video {
     display: block !important;
     width: 36px !important;
     height: 36px !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 15h-3l-2-5h-4V9h5l2 5h2v3zm-12 5a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/svg%3E") !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M8.5 4A2 2 0 0 1 10.5 6 2 2 0 0 1 8.5 8 2 2 0 0 1 6.5 6 2 2 0 0 1 8.5 4M5 9H12L12.5 11H8.66C7.72 11 6.9 11.66 6.68 12.57L5 20H3L4.76 12.06C5.15 10.35 6.64 9 8.25 9H5M20.5 13L23 18H20.5L18.5 14L17.5 18L14 17.5L15.86 11.35C16.16 10.36 17.14 9.75 18.16 9.95L19.5 10.2L20.75 12L20.5 13M10.5 20A2 2 0 0 0 8.5 22 2 2 0 0 0 6.5 20 2 2 0 0 0 8.5 18 2 2 0 0 0 10.5 20Z'/%3E%3C/svg%3E") !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
