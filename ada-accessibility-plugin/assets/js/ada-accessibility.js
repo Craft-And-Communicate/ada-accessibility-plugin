@@ -109,7 +109,7 @@
         toggle = document.createElement('button');
         toggle.id = 'ada-accessibility-toggle';
         toggle.className = CONFIG.position;
-        toggle.setAttribute('aria-label', 'Open C&C Accessibility Menu');
+        toggle.setAttribute('aria-label', 'Open Accessibility Menu');
         toggle.setAttribute('aria-expanded', 'false');
 
         // Icon is handled by CSS ::before pseudo-element for reliability
@@ -137,8 +137,8 @@
     function createPanelHTML() {
         return `
             <div class="ada-panel-header" role="banner">
-                <h2 id="ada-panel-title">C&C Accessibility</h2>
-                <button class="ada-close-btn" aria-label="Close C&C Accessibility menu">
+                <h2 id="ada-panel-title">ADA Accessibility</h2>
+                <button class="ada-close-btn" aria-label="Close Accessibility menu">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -245,7 +245,6 @@
                 </button>
             </div>
             <div class="ada-panel-footer">
-                <p>ADA Accessibility Widget by <a href="https://craftandcommunicate.com" target="_blank" rel="noopener" style="color: var(--ada-primary); text-decoration: none; font-weight: 600;">Craft &amp; Communicate</a></p>
             </div>
         `;
     }
