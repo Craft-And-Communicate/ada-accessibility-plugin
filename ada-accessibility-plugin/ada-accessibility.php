@@ -3,7 +3,7 @@
  * Plugin Name: C&C ADA Accessibility
  * Plugin URI: https://craftandcommunicate.com
  * Description: A comprehensive accessibility widget by Craft & Communicate, designed for seniors and senior living communities. Provides text sizing, contrast modes, reading guides, and more.
- * Version: 1.2.3
+ * Version: 1.2.4
  * Author: Craft & Communicate LLC
  * License: GPL v2 or later
  * Text Domain: ada-accessibility
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('ADA_ACCESS_VERSION', '1.2.3');
+define('ADA_ACCESS_VERSION', '1.2.4');
 define('ADA_ACCESS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ADA_ACCESS_PLUGIN_URL', plugin_dir_url(__FILE__));
 
